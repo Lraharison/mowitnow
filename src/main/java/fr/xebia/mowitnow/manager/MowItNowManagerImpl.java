@@ -96,7 +96,7 @@ public class MowItNowManagerImpl implements MowItNowManager {
 	 * @param mowerAction les commandes à faire sous forme de String
 	 * @param listToAdd list pour ajouter les poisitions à faire
 	 */
-	private void iteratePositions(PositionDto tmp,
+	protected void iteratePositions(PositionDto tmp,
 			PositionDto upRightCornerPos,
 			String mowerAction,
 			List<PositionDto> listToAdd) {
@@ -112,7 +112,7 @@ public class MowItNowManagerImpl implements MowItNowManager {
 	 * @param positionDto the position dto
 	 * @return the position dto
 	 */
-	private PositionDto copyPositionDto(PositionDto positionDto) {
+	protected PositionDto copyPositionDto(PositionDto positionDto) {
 		PositionDto result = new PositionDto();
 		result.setX(positionDto.getX());
 		result.setY(positionDto.getY());
@@ -128,11 +128,9 @@ public class MowItNowManagerImpl implements MowItNowManager {
 	 * @param dimension le dimension du terrain
 	 * @return the position dto
 	 */
-	private PositionDto move(final PositionDto initPosition, final char command, final PositionDto dimension) {
-		PositionDto finalPosition = new PositionDto();
-		finalPosition.setOrientation(initPosition.getOrientation());
-		finalPosition.setX(initPosition.getX());
-		finalPosition.setY(initPosition.getY());
+	protected PositionDto move(final PositionDto initPosition, final char command, final PositionDto dimension) {
+		PositionDto finalPosition = new PositionDto(initPosition.getX(), initPosition.getY(),
+				initPosition.getOrientation());
 		switch (command) {
 		case 'D':
 			rotateRight(finalPosition);
@@ -154,7 +152,7 @@ public class MowItNowManagerImpl implements MowItNowManager {
 	 *
 	 * @param positionDto the position dto
 	 */
-	private void rotateRight(PositionDto positionDto) {
+	protected void rotateRight(PositionDto positionDto) {
 		switch (positionDto.getOrientation()) {
 		case NORTH:
 			positionDto.setOrientation(ORIENTATION.EAST);
@@ -178,7 +176,7 @@ public class MowItNowManagerImpl implements MowItNowManager {
 	 *
 	 * @param positionDto the position dto
 	 */
-	private void rotateLeft(PositionDto positionDto) {
+	protected void rotateLeft(PositionDto positionDto) {
 		switch (positionDto.getOrientation()) {
 		case NORTH:
 			positionDto.setOrientation(ORIENTATION.WEST);
@@ -202,7 +200,7 @@ public class MowItNowManagerImpl implements MowItNowManager {
 	 * @param finalPositionDto the final position dto
 	 * @param dimension the dimension
 	 */
-	private void forward(final PositionDto initPosition, PositionDto finalPositionDto, final PositionDto dimension) {
+	protected void forward(final PositionDto initPosition, PositionDto finalPositionDto, final PositionDto dimension) {
 		int x = initPosition.getX();
 		int y = initPosition.getY();
 		switch (initPosition.getOrientation()) {
@@ -220,6 +218,7 @@ public class MowItNowManagerImpl implements MowItNowManager {
 			break;
 		}
 
+		// Quand le bord est atteint on ne se deplace plus
 		x = (x >= 0 && x <= dimension.getX())
 																					? x : initPosition.getX();
 		y = (y >= 0 && y <= dimension.getY())
@@ -227,6 +226,18 @@ public class MowItNowManagerImpl implements MowItNowManager {
 		finalPositionDto.setX(x);
 		finalPositionDto.setY(y);
 
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public MowItNowDto findByName(final String name) throws MowItNowException {
+		MowItNow mowItNow = mowItNowDao.findByName(name);
+		if (mowItNow == null) {
+			loggError("MowItNowDto introuvable : " + name, LOGGER);
+		}
+		return convertToMowItNowDto(mowItNow);
 	}
 
 }

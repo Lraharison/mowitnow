@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Mow It Now</title>
+<!-- stylesheet -->
+<link rel='stylesheet'
+	th:href='@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}'
+	type="text/css" media="screen" />
+<link rel="stylesheet" th:href="@{/static/main.css}" type="text/css"
+	media="screen" />
+</head>
+<body>
+
+	<div class="container">
+		<div>
+			<form class="form-inline" action="#" th:action="@{/postFile}"
+				method="post" enctype="multipart/form-data">
+				<div class="panel panel-primary row">
+					<div class="panel-heading">Mow It Now</div>
+					<div class="panel-body">
+						<div class="form-group col-xs-6">
+							<label class="control-label" for="fichier">Importer un
+								fichier</label>
+							<div>
+								<input type="file" id="file" name="file" class="filestyle"
+									data-input="false" />
+							</div>
+						</div>
+						<div class="form-group col-xs-6">
+							<div>
+								<input class="btn btn-primary" type="submit" value="Envoyer"
+									aria-pressed="false" autocomplete="off" />
+
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</form>
+		</div>
+		<div th:if="${message}" class="alert alert-danger" role="alert">
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+				<font th:text="${message}" />
+			</span>
+		</div>
+	</div>
+	<div class="container" style="width: 90%">
+		<div class="thumbnail">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nom de fichier</th>
+						<th>dimension terrain</th>
+						<th>position init tower1</th>
+						<th>actions tower1</th>
+						<th>position init tower2</th>
+						<th>actions tower2</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="obj : ${objects}" style="font-size: smaller">
+						<td th:text="${obj.name}"></td>
+						<td th:text="${obj.upRightCornerPos}"></td>
+						<td th:text="${obj.firstMowerPos}"></td>
+						<td th:text="${obj.firstMowerAction}"></td>
+						<td th:text="${obj.secondMowerPos}"></td>
+						<td th:text="${obj.secondMowerAction}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script th:src="@{/webjars/jquery/2.2.0/jquery.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+</body>
+</html>
