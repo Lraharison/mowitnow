@@ -15,3 +15,84 @@ height: 25px;
 .btn-primary{
 margin: 30px 0 0 0;
 }
+
+.main{
+    width: 100%;
+    max-width: 1360px;
+    margin: 50px auto;
+}
+.ground{
+    display: table;
+    margin: 0 auto;
+}
+.ground-cell{
+    background: url("bg_out.png");
+    display: table-cell;
+    width:43px;
+    height: 43px;
+}
+.toggle{
+    background: url("bg_in.png");
+}
+.ground-cell.lawnmower-red-north{
+    background: url("north.png")no-repeat center / 75%, url("bg_in.png");
+}
+.ground-cell.lawnmower-red-east{
+    background: url("east.png")no-repeat center / 75%, url("bg_in.png");
+}
+.ground-cell.lawnmower-red-south{
+    background: url("south.png")no-repeat center / 75%, url("bg_in.png");
+}
+.ground-cell.lawnmower-red-west{
+    background: url("west.png")no-repeat center / 75%, url("bg_in.png");
+}
+
+.ground-cell.lawnmower-blue-north{
+    background: url("north-b.png")no-repeat center / 75%, url("bg_in.png");
+}
+.ground-cell.lawnmower-blue-east{
+    background: url("east-b.png")no-repeat center / 75%, url("bg_in.png");
+}
+.ground-cell.lawnmower-blue-south{
+    background: url("south-b.png")no-repeat center / 75%, url("bg_in.png");
+}
+.ground-cell.lawnmower-blue-west{
+    background: url("west-b.png")no-repeat center / 75%, url("bg_in.png");
+}
+
+
+.action{
+    margin: 0 0 15px  10px;
+}
+button{
+    width: 34px;
+    height: 34px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+button.play{
+    background: #333 url("play-button.png") no-repeat center;
+}
+.axis-y{
+    width: 50px;
+    text-align: right;
+    border-bottom: 2px solid #333;
+    height: 80px;
+    position: absolute;
+    margin: 0 0 0 -52px;
+    line-height: 80px;
+    box-sizing: border-box;
+}
+.axis-x{
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    padding:2px;
+    border-left: 2px solid #333;
+    box-sizing: border-box;
+    display: inline-block;
+    box-sizing: border-box;
+}

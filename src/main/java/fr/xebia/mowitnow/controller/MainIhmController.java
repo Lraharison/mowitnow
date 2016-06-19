@@ -38,6 +38,7 @@ public class MainIhmController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		List<MowItNowDto> dtos = mowItNowManager.findAll();
+		dtos.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
 		model.addAttribute("objects", dtos);
 		return "home";
 	}

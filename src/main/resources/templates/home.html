@@ -57,6 +57,7 @@
 						<th>actions tower1</th>
 						<th>position init tower2</th>
 						<th>actions tower2</th>
+						<th>Jouer</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -67,13 +68,27 @@
 						<td th:text="${obj.firstMowerAction}"></td>
 						<td th:text="${obj.secondMowerPos}"></td>
 						<td th:text="${obj.secondMowerAction}"></td>
+						<td>
+							<button type="button" class="btn btn-default"
+								aria-label="Left Align">
+								<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+							</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
+	<div class="main">
+		<div class="ground">			
+	
+		</div>
+		<div class="action"></div>
+	</div>
 	<script th:src="@{/webjars/jquery/2.2.0/jquery.js}"
 		type="text/javascript"></script>
 	<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+	 <script th:src="@{/static/main.js}" type="text/javascript"></script>
+	
 </body>
 </html>
