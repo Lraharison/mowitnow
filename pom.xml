@@ -107,7 +107,7 @@
 					<pushFeatures>false</pushFeatures>
 					<pushReleases>false</pushReleases>
 					<pushHotfixes>false</pushHotfixes>
-					<noDeploy>false</noDeploy>
+					<noDeploy>true</noDeploy>
 					<flowInitContext>
 						<versionTagPrefix>v</versionTagPrefix>						
 					</flowInitContext>
