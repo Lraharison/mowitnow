@@ -11,8 +11,8 @@ public interface MowItNowManager {
 	/**
 	 * Creer un MowItNowDto.
 	 *
-	 * @param mowItNowDto
-	 * @throws MowItNowException
+	 * @param mowItNowDto mowItNowDto a creer
+	 * @throws MowItNowException mowItNowException
 	 */
 	public void create(MowItNowDto mowItNowDto) throws MowItNowException;
 
@@ -26,14 +26,14 @@ public interface MowItNowManager {
 	/**
 	 * Chercher un MowItNowDto par son nom.
 	 *
-	 * @return MowItNowDto
+	 * @return MowItNowDto MowItNowDto trouve par son nom
 	 */
 	public MowItNowDto findByName(final String name) throws MowItNowException;
 
 	/**
 	 * Calcule les coordonnees ou les deplacements des mowers.
 	 *
-	 * @param MowItNowDto
+	 * @param MowItNowDto mowItNowDto a calculer
 	 * @return MowItNowDto après mouvement
 	 */
 	public MoveDto calculate(MowItNowDto mowItNowDto);
