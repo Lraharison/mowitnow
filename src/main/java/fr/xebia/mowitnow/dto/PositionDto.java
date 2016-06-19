@@ -33,6 +33,17 @@ public class PositionDto implements Serializable {
 	/** ordonnee. */
 	private int y;
 
+	public PositionDto() {
+
+	}
+
+	public PositionDto(int x, int y, ORIENTATION orientation) {
+		super();
+		this.x = x;
+		this.y = y;
+		this.orientation = orientation;
+	}
+
 	private ORIENTATION orientation;
 
 	public int getX() {

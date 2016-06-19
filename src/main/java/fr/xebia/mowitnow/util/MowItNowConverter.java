@@ -25,6 +25,13 @@ public class MowItNowConverter {
 	 * @param entite
 	 * @return dto
 	 */
+
+	/**
+	 * Convert un entite MowItNow en MowItNowDto.
+	 *
+	 * @param mowItNow mowItNow a convertir
+	 * @return mowItNowDto converti
+	 */
 	public static MowItNowDto convertToMowItNowDto(final MowItNow mowItNow) {
 		MowItNowDto mowItNowDto = null;
 		if (mowItNow != null) {
@@ -37,8 +44,8 @@ public class MowItNowConverter {
 	/**
 	 * Convert une liste d'entite MowItNow en une liste de MowItNowDto.
 	 *
-	 * @param liste entite
-	 * @return list dto
+	 * @param mowItNows liste d'entite
+	 * @return the list dto
 	 */
 	public static List<MowItNowDto> convertToMowItNowDto(final List<MowItNow> mowItNows) {
 		List<MowItNowDto> result = new ArrayList<>();
@@ -72,7 +79,7 @@ public class MowItNowConverter {
 	/**
 	 * Convert une liste de dto en une liste d'entite.
 	 *
-	 * @param liste de dto
+	 * @param mowItNowDtos liste dto
 	 * @return liste d'entite
 	 */
 	public static List<MowItNow> convertToEntity(final List<MowItNowDto> mowItNowDtos) {
